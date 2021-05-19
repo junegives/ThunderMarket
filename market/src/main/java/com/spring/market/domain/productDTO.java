@@ -4,9 +4,11 @@ import java.util.Date;
 
 /*CREATE TABLE board(
 		bno INT NOT NULL AUTO_INCREMENT,
+		category VARCHAR(50) NOT NULL,
 		img VARCHAR(255) NOT NULL,
 		content TEXT NOT NULL,
 		price INT NOT NULL,
+		state TINYINT DEFAULT 0,
 		writer VARCHAR(30) NOT NULL,
 		pword VARCHAR(30) NOT NULL,
 		regDate TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -17,16 +19,18 @@ import java.util.Date;
 */
 
 /*
-insert into market(img, content, price, writer, pword)
-  values('img1', '내용1', 3000, '작성자', '1234');
+insert into market(category, img, content, price, writer, pword)
+  values('img1', 'Toys', '내용1', 3000, '작성자', '1234');
 
  */
 public class productDTO {
 
 	private int bno;
+	private String category;
 	private String img;
 	private String content;
 	private int price;
+	private String state;
 	private String writer;
 	private String pword;
 	private Date regDate;
@@ -103,5 +107,21 @@ public class productDTO {
 
 	public void setReplyCnt(int replyCnt) {
 		this.replyCnt = replyCnt;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 }

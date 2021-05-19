@@ -4,10 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.market.mappers">
 
-	<select id="product" resultType="com.spring.market.domain.productDTO">
+	<!-- Query to get products list in main page -->
+	<select id="product"
+		resultType="com.spring.market.domain.productDTO">
 		select
-			bno, img, content, price, writer, pword, regDate, viewCnt, replyCnt
+		bno, category, img, content, price, state, writer, pword,
+		regDate, viewCnt,
+		replyCnt
 		from market
 	</select>
+
+	<!-- Query to write products in write page -->
+	<insert id="write"
+		parameterType="com.spring.market.domain.productDTO">
+		insert into market(category, img, content, price, state,
+		writer, pword) values(#{category}, #{img}, #{content}, #{price},
+		#{state}, #{writer}, #{pword});
+	</insert>
 	
+	<!-- Query to view the product in view page -->
+	<select id="view"
+		resultType="com.spring.market.domain.productDTO">
+		select
+		bno, category, img, content, price, state, writer, pword,
+		regDate, viewCnt,
+		replyCnt
+		from market
+		where bno = #{bno}
+	</select>
+
 </mapper>
