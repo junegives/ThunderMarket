@@ -15,6 +15,12 @@ import java.util.Date;
 		PRIMARY KEY(bno)
 	);
 */
+
+/*
+insert into market(img, content, price, writer, pword)
+  values('img1', '내용1', 3000, '작성자', '1234');
+
+ */
 public class productDTO {
 
 	private int bno;
