@@ -37,7 +37,7 @@
 	<update id="modify"
 		parameterType="com.spring.market.domain.productDTO">
 		update market set category = #{category}, img = #{img}, content = #{content}, price = #{price},
-		state = #{state}, writer = #{writer}, pword = #{pword} where bno = #{bno}
+		state = #{state}, writer = #{writer}, pword = #{pword}, regDate = DEFAULT where bno = #{bno}
 	</update>
 
 	<!-- Query to delete the product in delete page -->

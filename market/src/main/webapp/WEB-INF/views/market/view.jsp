@@ -15,7 +15,7 @@
 	<div>${view.img}</div>
 	<div>
 		작성자 ${view.writer}<br> 작성일
-		<fmt:formatDate value="${view.regDate}" pattern="yyyy.MM.dd hh:mm" />
+		<fmt:formatDate value="${view.regDate}" pattern="yyyy.MM.dd HH:mm" />
 		<br> 조회수 ${view.viewCnt}<br> 상품설명<br> ${view.content}<br>
 		가격<br> ${view.price} &#8361;
 	</div>
@@ -24,24 +24,26 @@
 			placeholder="게시글 비밀번호" id="pword" name="pword" />
 		<button type="button" id="btn_modify">게시글 수정</button>
 		<button type="button" id="btn_delete">게시글 삭제</button>
-		<script>
-			document.getElementById('btn_modify').onclick = function() {
-				if (document.getElementById('pword').value == ${view.pword}) {
-					location.href='/market/modify?bno='+${view.bno}
-				} else {
-					window.alert("비밀번호가 일치하지 않습니다.");
-				}
-				return false;
-			}
-			document.getElementById('btn_delete').onclick = function() {
-				if (document.getElementById('pword').value == ${view.pword}) {
-					location.href='/market/delete?bno='+${view.bno}
-				} else {
-					window.alert("비밀번호가 일치하지 않습니다.");
-				}
-				return false;
-			}
-		</script>
 	</div>
 </body>
 </html>
+
+
+<script>
+	document.getElementById('btn_modify').onclick = function() {
+		if (document.getElementById('pword').value == ${view.pword}) {
+			location.href='/market/modify?bno='+${view.bno}
+		} else {
+			window.alert("비밀번호가 일치하지 않습니다.");
+		}
+		return false;
+	}
+	document.getElementById('btn_delete').onclick = function() {
+		if (document.getElementById('pword').value == ${view.pword}) {
+			location.href='/market/delete?bno='+${view.bno}
+		} else {
+			window.alert("비밀번호가 일치하지 않습니다.");
+		}
+		return false;
+	}
+</script>
