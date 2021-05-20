@@ -23,4 +23,9 @@ public interface marketDAO {
 	// Delete the product in DB
 	public void delete(int bno) throws Exception;
 
+	// Get the number of product in DB
+	public int count() throws Exception;
+
+	// Get product list with paging from DB
+	public List<productDTO> paging(int current, int cntPerPage) throws Exception;
 }

@@ -91,4 +91,57 @@ public class MarketController {
 
 		return "redirect:/market/main";
 	}
+	
+	// Request to product list with paging
+	// Call the Service to handle business logic that prints a list of products with paging
+	// Send the returned product list results(model) to the view.
+	@RequestMapping(value = "/paging", method = RequestMethod.GET)
+	public void paging(Model model, @RequestParam("num") int num) throws Exception {
+		 
+		// The number of products.
+		 int count = service.count();
+		  
+		 // The number of products to print per page.
+		 int cntPerPage = 3;
+		  
+		 // The number of pages.
+		 int numPage = (int)Math.ceil((double)count/cntPerPage);
+		  
+		 // The first post on the current page.
+		 int current = (num - 1) * cntPerPage;
+		 
+		 // The number of pages output at a time.
+		 int numPagePrint = 5;
+
+		 // Start page number to print out.
+		 int numStartPage = num-2;
+		 
+		 // End page number to print out.
+		 int numEndPage = num+2;
+		 
+		 // Check the page number is beyond the range of 1 to maximum page number.
+		 if(numStartPage <= 1) {
+			 numStartPage = 1;
+			 numEndPage = 5;
+		 }
+		 if(numEndPage >= numPage) {
+			 numEndPage = numPage;
+			 numStartPage = numEndPage - 4;
+		 }
+		 if(numPage < 5) {
+			 numStartPage = 1;
+			 numEndPage = numPage;
+		 }
+		    
+		 List<productDTO> list = null; 
+		 list = service.paging(current, cntPerPage);
+		 model.addAttribute("list", list);   
+		 model.addAttribute("numPage", numPage);
+
+		 model.addAttribute("numStartPage", numStartPage);   
+		 model.addAttribute("numEndPage", numEndPage);
+		 
+		 model.addAttribute("select", num);
+		 
+	}
 }

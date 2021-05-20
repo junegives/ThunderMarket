@@ -2,13 +2,13 @@ package com.spring.market.domain;
 
 import java.util.Date;
 
-/*CREATE TABLE board(
+/*CREATE TABLE market(
 		bno INT NOT NULL AUTO_INCREMENT,
 		category VARCHAR(50) NOT NULL,
 		img VARCHAR(255) NOT NULL,
 		content TEXT NOT NULL,
 		price INT NOT NULL,
-		state TINYINT DEFAULT 0,
+		state TINYINT DEFAULT '판매중',
 		writer VARCHAR(30) NOT NULL,
 		pword VARCHAR(30) NOT NULL,
 		regDate TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -21,8 +21,23 @@ import java.util.Date;
 /*
 insert into market(category, img, content, price, writer, pword)
   values('img1', 'Toys', '내용1', 3000, '작성자', '1234');
+  
+  insert into market(category, img, content, price, writer, pword)
+  values('img2', 'Electronics', '내용2', 10000, '두번째사람', '1234');
+  
+  insert into market(category, img, content, price, writer, pword)
+  values('img3', 'Fruits', '내용3', 13000, '나나나', '1234');
+  
+  insert into market(category, img, content, price, writer, pword)
+  values('img4', 'Toys', '내용1', 3000, '작성자', '1234');
+  
+  insert into market(category, img, content, price, writer, pword)
+  values('img5', 'Electronics', '내용2', 10000, '작성자2', '1234');
 
+  insert into market(category, img, content, price, writer, pword)
+  values('img6', 'Fruits', '내용3', 5000, '작성자3', '1234');
  */
+
 public class productDTO {
 
 	private int bno;

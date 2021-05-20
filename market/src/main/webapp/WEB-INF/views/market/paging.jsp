@@ -47,5 +47,40 @@
 		</tbody>
 
 	</table>
+
+	<div>
+	<c:if test="${select ne 1}">
+		<span>
+		<a href="/market/paging?num=${select - 1}"><<</a>
+		</span>
+	</c:if>
+	<c:if test="${select eq 1}">
+		<span>
+		<a href="/market/paging?num=${select}"><<</a>
+		</span>
+	</c:if>
+
+	<c:forEach begin="${numStartPage}" end="${numEndPage}" var="num">
+		<span>
+		<c:if test="${select != num}">
+			<a href="/market/paging?num=${num}">${num}</a>
+		</c:if>
+		<c:if test="${select == num}">
+		<b>${num}</b>
+		</c:if>
+		</span>
+	</c:forEach>
+
+	<c:if test="${select ne numPage}">
+		<span>
+		<a href="/market/paging?num=${select + 1}">>></a>
+		</span>
+	</c:if>
+	<c:if test="${select eq numPage}">
+		<span>
+		<a href="/market/paging?num=${select}">>></a>
+		</span>
+	</c:if>
+	</div>
 </body>
 </html>

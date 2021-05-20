@@ -24,4 +24,10 @@ public interface marketService {
 
 	 // Call DAO method to delete the product DTO in DB.
 	 public void delete(int bno) throws Exception;
+
+	 // Call DAO method to get the number of product DTO in DB.
+	 public int count() throws Exception;
+	 
+	// Call DAO method to get the list of products with paging.
+	 public List<productDTO> paging(int current, int cntPerPage) throws Exception;
 }

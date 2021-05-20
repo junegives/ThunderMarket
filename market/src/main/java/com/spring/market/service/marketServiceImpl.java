@@ -54,4 +54,18 @@ public class marketServiceImpl implements marketService {
 		dao.delete(bno);
 	}
 
+	 // Call DAO method to get the number of product DTO in DB.
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count();
+	}
+
+	 // Call DAO method to get the list of product with paging.
+	@Override
+	public List<productDTO> paging(int current, int cntPerPage) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.paging(current, cntPerPage);
+	}
+
 }

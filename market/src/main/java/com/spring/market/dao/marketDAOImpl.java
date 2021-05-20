@@ -1,5 +1,6 @@
 package com.spring.market.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -55,6 +56,25 @@ public class marketDAOImpl implements marketDAO {
 	public void delete(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		sql.delete(namespace + ".delete", bno);
+	}
+
+	// Get the number of product in DB
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".count");
+	}
+
+	// Get product list with paging from DB
+	@Override
+	public List<productDTO> paging(int current, int cntPerPage) throws Exception {
+		// TODO Auto-generated method stub
+		 HashMap<String, Integer> data = new HashMap();
+		  
+		 data.put("current", current);
+		 data.put("cntPerPage", cntPerPage);
+		  
+		 return sql.selectList(namespace + ".paging", data);
 	}
 
 }

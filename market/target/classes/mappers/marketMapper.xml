@@ -9,11 +9,25 @@
 		resultType="com.spring.market.domain.productDTO">
 		select
 		bno, category, img, content, price, state, writer, pword,
-		regDate, viewCnt,
-		replyCnt
-		from market
+		regDate, viewCnt, replyCnt from market
+		order by case
+		when state='판매중' THEN 1
+		when state='예약중' THEN 1
+		when state='판매완료' THEN 2
+		else 99 end asc,
+		regDate asc
+		limit 30
+
 	</select>
 
+	<!-- Query to view the product in view page -->
+	<select id="view"
+		resultType="com.spring.market.domain.productDTO">
+		select
+		bno, category, img, content, price, state, writer, pword,
+		regDate, viewCnt, replyCnt from market where bno = #{bno}
+	</select>
+	
 	<!-- Query to write products in write page -->
 	<insert id="write"
 		parameterType="com.spring.market.domain.productDTO">
@@ -21,17 +35,6 @@
 		writer, pword) values(#{category}, #{img}, #{content}, #{price},
 		#{state}, #{writer}, #{pword});
 	</insert>
-	
-	<!-- Query to view the product in view page -->
-	<select id="view"
-		resultType="com.spring.market.domain.productDTO">
-		select
-		bno, category, img, content, price, state, writer, pword,
-		regDate, viewCnt,
-		replyCnt
-		from market
-		where bno = #{bno}
-	</select>
 	
 	<!-- Query to modify the product in modify page -->
 	<update id="modify"
@@ -45,4 +48,23 @@
 		parameterType="com.spring.market.domain.productDTO">
 		delete from market where bno = #{bno}
 	</delete>
+	
+	<!-- Query to get the number of product in DB -->
+	<select id="count" resultType="int">
+	 	select count(bno) from market
+	</select>
+	
+	<!-- Query to get products list with paging -->
+	<select id="paging" parameterType="HashMap" resultType="com.spring.market.domain.productDTO">
+		select
+		bno, category, img, content, price, state, writer, pword,
+		regDate, viewCnt, replyCnt from market
+		order by case
+		when state='판매중' THEN 1
+		when state='예약중' THEN 1
+		when state='판매완료' THEN 2
+		else 99 end asc,
+		regDate asc
+		limit #{current}, #{cntPerPage}
+	</select>
 </mapper>
