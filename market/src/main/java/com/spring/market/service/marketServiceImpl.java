@@ -47,4 +47,11 @@ public class marketServiceImpl implements marketService {
 		dao.modify(dto);
 	}
 
+	 // Call DAO method to delete the product DTO in DB.
+	@Override
+	public void delete(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		dao.delete(bno);
+	}
+
 }

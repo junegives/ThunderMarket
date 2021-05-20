@@ -8,6 +8,8 @@
 <title>modify</title>
 </head>
 <body>
+
+<div id="navi"> <%@ include file="../include/navi.jsp" %></div>
 	<h2>게시글 수정</h2>
 	<form id="modifyProduct" name="modifyProduct" method="post">
 		<div>

@@ -19,5 +19,8 @@ public interface marketDAO {
 	
 	// Modify the product in DB
 	public void modify(productDTO dto) throws Exception;
+	
+	// Delete the product in DB
+	public void delete(int bno) throws Exception;
 
 }

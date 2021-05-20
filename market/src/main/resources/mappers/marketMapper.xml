@@ -40,4 +40,9 @@
 		state = #{state}, writer = #{writer}, pword = #{pword} where bno = #{bno}
 	</update>
 
+	<!-- Query to delete the product in delete page -->
+	<delete id="delete"
+		parameterType="com.spring.market.domain.productDTO">
+		delete from market where bno = #{bno}
+	</delete>
 </mapper>

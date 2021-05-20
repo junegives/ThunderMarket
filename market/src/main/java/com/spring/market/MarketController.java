@@ -80,4 +80,15 @@ public class MarketController {
 
 		return "redirect:/market/view?bno="+dto.getBno();
 	}
+	
+	// Users request to delete the product.
+	// Call the Service to handle business logic that delete product in DB.
+	// After processing business logic, the main page is printed out.
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(@RequestParam("bno") int bno) throws Exception {
+
+		service.delete(bno);
+
+		return "redirect:/market/main";
+	}
 }

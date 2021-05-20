@@ -21,5 +21,7 @@ public interface marketService {
 
 	 // Call DAO method to modify value of the product DTO in DB.
 	 public void modify(productDTO dto) throws Exception;
-	 
+
+	 // Call DAO method to delete the product DTO in DB.
+	 public void delete(int bno) throws Exception;
 }

@@ -49,4 +49,12 @@ public class marketDAOImpl implements marketDAO {
 		sql.update(namespace + ".modify", dto);
 	}
 
+
+	// Delete the product in DB
+	@Override
+	public void delete(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		sql.delete(namespace + ".delete", bno);
+	}
+
 }

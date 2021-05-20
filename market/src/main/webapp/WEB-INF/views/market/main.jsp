@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +9,8 @@
 <title>메인페이지</title>
 </head>
 <body>
+
+<div id="navi"> <%@ include file="../include/navi.jsp" %></div>
 	<table>
 		<thead>
 			<tr>
@@ -33,7 +36,7 @@
 					<td>${list.content}</td>
 					<td>${list.price}</td>
 					<td>${list.writer}</td>
-					<td>${list.regDate}</td>
+					<td><fmt:formatDate value="${list.regDate}" pattern="yyyy.MM.dd hh:mm" /></td>
 					<td>${list.viewCnt}</td>
 					<td>
 					<a href="/market/view?bno=${list.bno}">${list.state}</a>
