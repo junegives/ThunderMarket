@@ -12,15 +12,15 @@
 	<form id="writeProduct" name="writeProduct" method="post">
 		<div>
 			닉네임 <input style="width: 150px" type="text" id="writer"
-				maxlength="10" name="writer" /><
+				maxlength="10" name="writer" />
 		</div>
 		<div>
 			비밀번호<input style="width: 150px" type="password" maxlength="30" id="pword" name="pword" />
 			카테고리<select style="width: 150px" name="category" id="category">
-				<option value="toys">Toys</option>
-				<option value="clothes">Clothes</option>
-				<option value="fruits">Fruits</option>
-				<option value="electronics">Electronics</option>
+				<option value="Toys">Toys</option>
+				<option value="Clothes">Clothes</option>
+				<option value="Fruits">Fruits</option>
+				<option value="Electronics">Electronics</option>
 			</select>
 		</div>
 		<div>
@@ -38,9 +38,9 @@
 			<input style="width: 150px" type="text" maxlength="200" id="img" name="img" />
 		</div>
 		<div>
-			판매중<input type="radio" name="state" value="0" checked="checked">
-			예약중<input type="radio" name="state" value="1">
-			판매완료<input type="radio" name="state" value="2">
+			판매중<input type="radio" name="state" value="판매중" checked="checked">
+			예약중<input type="radio" name="state" value="예약중">
+			판매완료<input type="radio" name="state" value="판매완료">
 			<button type="submit">등록</button>
 		</div>
 	</form>

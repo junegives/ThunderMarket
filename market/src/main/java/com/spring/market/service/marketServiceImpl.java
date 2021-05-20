@@ -24,20 +24,27 @@ public class marketServiceImpl implements marketService {
 
 		return dao.getList();
 	}
-	
-	// Call DAO method to put the value of the product DTO into the DB. 
+
+	// Call DAO method to put the value of the product DTO into the DB.
 	@Override
 	public void write(productDTO dto) throws Exception {
-		
+
 		dao.write(dto);
-		
+
 	}
 
-	 // Call DAO method to view the productDTO from DB.
+	// Call DAO method to view the productDTO from DB.
 	@Override
 	public productDTO view(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.view(bno);
+	}
+
+	// Call DAO method to modify value of the product DTO in DB.
+	@Override
+	public void modify(productDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify(dto);
 	}
 
 }

@@ -16,5 +16,8 @@ public interface marketDAO {
 	
 	// View the product from DB
 	public productDTO view(int bno) throws Exception;
+	
+	// Modify the product in DB
+	public void modify(productDTO dto) throws Exception;
 
 }

@@ -42,4 +42,11 @@ public class marketDAOImpl implements marketDAO {
 		return sql.selectOne(namespace + ".view", bno);
 	}
 
+	// Modify the product in DB
+	@Override
+	public void modify(productDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update(namespace + ".modify", dto);
+	}
+
 }

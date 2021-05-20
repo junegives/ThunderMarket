@@ -18,5 +18,8 @@ public interface marketService {
 	 
 	 // Call DAO method to view the productDTO from DB.
 	 public productDTO view(int bno) throws Exception;
+
+	 // Call DAO method to modify value of the product DTO in DB.
+	 public void modify(productDTO dto) throws Exception;
 	 
 }

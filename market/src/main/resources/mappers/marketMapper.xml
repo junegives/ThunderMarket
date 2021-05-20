@@ -32,5 +32,12 @@
 		from market
 		where bno = #{bno}
 	</select>
+	
+	<!-- Query to modify the product in modify page -->
+	<update id="modify"
+		parameterType="com.spring.market.domain.productDTO">
+		update market set category = #{category}, img = #{img}, content = #{content}, price = #{price},
+		state = #{state}, writer = #{writer}, pword = #{pword} where bno = #{bno}
+	</update>
 
 </mapper>

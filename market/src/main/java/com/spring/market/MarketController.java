@@ -34,11 +34,11 @@ public class MarketController {
 		model.addAttribute("list", list);
 
 	}
-	
+
 	// Users request to output the write page.
-	@RequestMapping(value="/write", method = RequestMethod.GET)
-	public void Write() throws Exception {
-		
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public void write() throws Exception {
+
 	}
 
 	// Users request to write the products.
@@ -52,8 +52,6 @@ public class MarketController {
 		return "redirect:/market/main";
 	}
 
-
-
 	// Users request to view the product.
 	// Call the Service to handle business logic that get information of the product corresponding to bno.
 	// Send the result to view.
@@ -61,5 +59,25 @@ public class MarketController {
 	public void view(@RequestParam("bno") int bno, Model model) throws Exception {
 		productDTO dto = service.view(bno);
 		model.addAttribute("view", dto);
+	}
+
+	// Users request to output the write page.
+	// Call the Service to handle business logic that modify information of the product corresponding to bno.
+	// Send the result to view.
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modify(@RequestParam("bno") int bno, Model model) throws Exception {
+		productDTO dto = service.view(bno);
+		model.addAttribute("view", dto);
+	}
+	
+	// Users request to modify the product.
+	// Call the Service to handle business logic that modify product in DB.
+	// After processing business logic, the view page is printed out.
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(productDTO dto) throws Exception {
+
+		service.modify(dto);
+
+		return "redirect:/market/view?bno="+dto.getBno();
 	}
 }
