@@ -2,15 +2,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/marketcss.css">
 </head>
 <body>
+	<div class="container">
+		<header>
 
-<div id="navi"> <%@ include file="../include/navi.jsp" %></div>
+			<h1><a href="/market/paging?num=1">천둥마켓</a></h1>
+
+		</header>
+
+		<section class="content">
+			<nav id="navi">
+				<%@ include file="../include/navi_paging.jsp"%>
+			</nav>
+			<main>
 	<table>
 		<thead>
 			<tr>
@@ -48,39 +61,10 @@
 
 	</table>
 
-	<div>
-	<c:if test="${select ne 1}">
-		<span>
-		<a href="/market/paging?num=${select - 1}"><<</a>
-		</span>
-	</c:if>
-	<c:if test="${select eq 1}">
-		<span>
-		<a href="/market/paging?num=${select}"><<</a>
-		</span>
-	</c:if>
+			</main>
 
-	<c:forEach begin="${numStartPage}" end="${numEndPage}" var="num">
-		<span>
-		<c:if test="${select != num}">
-			<a href="/market/paging?num=${num}">${num}</a>
-		</c:if>
-		<c:if test="${select == num}">
-		<b>${num}</b>
-		</c:if>
-		</span>
-	</c:forEach>
+		</section>
 
-	<c:if test="${select ne numPage}">
-		<span>
-		<a href="/market/paging?num=${select + 1}">>></a>
-		</span>
-	</c:if>
-	<c:if test="${select eq numPage}">
-		<span>
-		<a href="/market/paging?num=${select}">>></a>
-		</span>
-	</c:if>
 	</div>
 </body>
 </html>

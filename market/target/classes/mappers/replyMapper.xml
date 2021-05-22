@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.reply.mappers">
+
+	<!-- Query to get reply list in product view page -->
+	<select id="reply" parameterType="int"
+		resultType="com.spring.market.domain.replyDTO">
+		select
+		rno, bno, writer, pword, content, regDate
+		from reply
+		where bno = #{bno}
+	</select>
+
+	<!-- Query to write reply -->
+	<insert id="replyWrite" parameterType="com.spring.market.domain.replyDTO">
+		insert into reply(bno, writer, pword, content, regDate)
+		value(#{bno}, #{writer}, #{pword}, #{content}, #{regDate})
+	</insert>
+
+	<!-- Query to modify reply -->
+	<update id="replyModify"
+		parameterType="com.spring.market.domain.replyDTO">
+		update reply set
+		writer = #{writer},
+		pword = #{pword},
+		content = #{content}
+		where rno = #{rno}
+		and bno = #{bno}
+	</update>
+
+	<!-- Query to delete the view -->
+	<delete id="replyDelete"
+		parameterType="com.spring.market.domain.replyDTO">
+		delete from reply
+		where rno = #{rno}
+		and bno = ${bno}
+	</delete>
+	
+</mapper>

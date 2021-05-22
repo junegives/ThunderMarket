@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.market.domain.productDTO;
+import com.spring.market.domain.replyDTO;
 import com.spring.market.service.marketService;
+import com.spring.market.service.replyService;
 
 // Handles requests for the application home page.
 @Controller
@@ -19,8 +21,11 @@ import com.spring.market.service.marketService;
 public class MarketController {
 
 	@Inject
-	marketService service;
+	private marketService service;
 
+	@Inject
+	private replyService rservice;
+	
 	// Users request to output the main page.
 	// Call the Service to handle business logic that prints a list of products on
 	// the main page.
@@ -59,6 +64,10 @@ public class MarketController {
 	public void view(@RequestParam("bno") int bno, Model model) throws Exception {
 		productDTO dto = service.view(bno);
 		model.addAttribute("view", dto);
+		
+		List<replyDTO> reply = null;
+		reply = rservice.replyList(bno);
+		model.addAttribute("reply", reply);
 	}
 
 	// Users request to output the write page.
